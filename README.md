@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/w6eGEZp.png" alt="drawing" width="200"/>
+<img src="https://i.imgur.com/nRl78Bi.png" alt="drawing" width="100"/>
 
 UI Library built in Tailwind CSS.
 
