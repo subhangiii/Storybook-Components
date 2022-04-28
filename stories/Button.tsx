@@ -1,19 +1,15 @@
 import React from 'react';
-import './button.css';
 
 interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
+  type: 'primary' | 'outline' | 'link';
+  
   /**
    * How large should the button be?
    */
-  size?: 'small' | 'medium' | 'large';
+  size: 'xs' | 'sm' | 'base' | 'lg';
   /**
    * Button contents
    */
@@ -21,6 +17,14 @@ interface ButtonProps {
   /**
    * Optional click handler
    */
+  isDisabled: boolean;
+
+  // textColor?: string;
+  // darkTextColor?: string;
+
+  // backgroundColor?: string;
+  // darkBackgroundColor?: string;
+
   onClick?: () => void;
 }
 
@@ -28,21 +32,36 @@ interface ButtonProps {
  * Primary UI component for user interaction
  */
 export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
+  type = 'primary',
+  size = 'base',
+  label = "Button",
+  isDisabled = false,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  return (
+  let css: string = "";
+
+  if (type === 'primary') {
+    css = ` text-${size} px-5 py-2.5 text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-md  dark:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none dark:focus:ring-blue-800`;
+  }
+  if (type === 'outline') {
+    css = ` text-${size} px-5 py-2.5 text-center text-blue-700 bg-blue-500 bg-opacity-0 hover:bg-gray-100 border border-blue-700 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-md dark:text-blue-500 dark:border-blue-500 dark:focus:ring-opacity-0 dark:hover:bg-blue-500 dark:hover:bg-opacity-5`;
+  }
+  if (type === 'link') {
+    css = `text-${size} px-5 py-2.5 text-center text-blue-700 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:bg-opacity-5 dark:focus:ring-blue-800`;
+  }
+    if (isDisabled) {
+      css = `text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-md text-${size} px-5 py-2.5 text-center`;
+    }
+
+    return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
+      className={css}
+      disabled = {isDisabled}
       {...props}
     >
       {label}
     </button>
   );
 };
+
