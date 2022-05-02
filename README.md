@@ -8,7 +8,7 @@ First, run the development server:
 npm run storybook
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:6006](http://localhost:6006) with your browser to see the result.
 
 ## Contributing Guidelines
 - Make Figma of the required component.
