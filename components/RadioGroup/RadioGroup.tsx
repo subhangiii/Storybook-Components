@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { RadioGroup } from '@headlessui/react'
 
-interface RadioProps {
+interface RadioGroupProps {
 
-  showIcon: boolean;
+  showIcon?: boolean;
   size: 'xs' | 'sm' | 'md' | 'lg' | 'full';
-  isDisabled: boolean;
+  label?: string;
+  isDisabled?: boolean;
+  inputs?: Array<{name?:string,description?:string}>;
   onClick?: () => void;
 
 }
@@ -13,52 +15,34 @@ interface RadioProps {
 /**
  * Primary UI component for user interaction
  */
-export const Radio = ({
+export const RadioGroupUI = ({
   showIcon = true,
-  size = 'md',
+  size,
+  label,
+  inputs,
   isDisabled = false,
   ...props
-}: RadioProps) => {
-    const plans = [
-  {
-    name: 'Startup',
-    ram: '12GB',
-    cpus: '6 CPUs',
-    disk: '160 GB SSD disk',
-  },
-  {
-    name: 'Business',
-    ram: '16GB',
-    cpus: '8 CPUs',
-    disk: '512 GB SSD disk',
-  },
-  {
-    name: 'Enterprise',
-    ram: '32GB',
-    cpus: '12 CPUs',
-    disk: '1024 GB SSD disk',
-  },
-]
+}: RadioGroupProps) => {
     const [selected, setSelected] = useState('startup')
-    let disabled = isDisabled ? 'cursor-not-allowed' : ''
-
+    let disabled = isDisabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'
     return (
      
       <div className={`max-w-${size}`}>
         <RadioGroup value={selected} onChange={setSelected}>
-          <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
+          <RadioGroup.Label className="sr-only">{label}</RadioGroup.Label>
           <div className="space-y-2">
-            {plans.map((plan) => (
+            {inputs.map((plan) => (
               <RadioGroup.Option
                 key={plan.name}
                 value={plan}
+                disabled={isDisabled}
                 className={({ active, checked }) =>
                   `${
                     active
                       ? 'ring-2 ring-blue-500 ring-opacity-60 bg-blue-100 dark:text-white duration-300 dark:bg-blue-500' 
                       : 'dark:bg-blue-700 dark:text-white'
                   }
-                    focus:outline-none relative flex cursor-pointer rounded-md px-5 py-4 shadow-md ${disabled}`
+                    focus:outline-none relative ${disabled} flex rounded-md px-5 py-4 shadow-md `
                 }
               >
                 {({ active, checked }) => (
@@ -73,12 +57,13 @@ export const Radio = ({
                           >
                             {plan.name}
                           </RadioGroup.Label>
-                          <RadioGroup.Description
+                          {plan.description && (<RadioGroup.Description
                             as="span"
                             className={`inline`}
                           >
-                              {plan.ram}/{plan.cpus} 
-                          </RadioGroup.Description>
+                              {plan.description} 
+                          </RadioGroup.Description>)}
+                          
                         </div>
                       </div>
                       {showIcon && ( <svg
@@ -95,8 +80,6 @@ export const Radio = ({
                           />
                         </svg>)
                         }
-                     
-
                     </div>
                   </>
                 )}
