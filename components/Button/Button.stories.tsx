@@ -44,10 +44,6 @@ Primary.args = {
   size : 'base',
   label : "Button",
   isDisabled : false,
-  // textColor: "white" ,
-  // darkTextColor: "white",
-  // backgroundColor: "blue-700",
-  // darkBackgroundColor: "blue-500"
 };
 
 export const Outline = Template.bind({});
@@ -56,8 +52,7 @@ Outline.args = {
   size : 'base',
   label : "Button",
   isDisabled : false,
-  // textColor: "blue-700" ,
-  // backgroundColor: "blue-500"
+
 };
 
 export const Link = Template.bind({});
