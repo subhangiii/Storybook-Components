@@ -5,7 +5,6 @@ interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
-  type: 'primary' | 'outline' | 'link';
   
   /**
    * How large should the button be?
@@ -14,7 +13,7 @@ interface ButtonProps {
   /**
    * Button contents
    */
-  label: string;
+  isChecked: boolean;
   /**
    * Optional click handler
    */
@@ -33,20 +32,21 @@ interface ButtonProps {
  * Primary UI component for user interaction
  */
 export const SwitchComp = ({
-  type = 'primary',
   size = 'base',
-  label = "Button",
+  isChecked = false,
   isDisabled = false,
   ...props
 }: ButtonProps) => {
-
-  const [enabled, setEnabled] = useState(false) 
+  let disable = isDisabled ? " cursor-not-allowed opacity-75 ;" : "cursor-pointer";
+  const [enabled, setEnabled] = useState(isChecked) 
     return (
       <Switch
         checked={enabled}
         onChange={setEnabled}
+        disabled={isDisabled}
         className={`${enabled ? 'bg-blue-600' : 'bg-gray-300'}
-          relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          relative inline-flex h-[38px] w-[74px] shrink-0  rounded-full border-2 border-transparent transition-colors 
+          duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75 ${disable}`}
       >
         <span className="sr-only">Use setting</span>
         <span

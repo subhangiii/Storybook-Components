@@ -9,18 +9,12 @@ export default {
   component: SwitchComp,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-
-    label: {
-      options: 'string',
-      control: { type: 'text' },
-      description: 'Set the label of radio.',
-    },
     isDisabled:{
       options: 'boolean',  
       description: 'Is the button disabled?',
       defaultValue: false,
     },
-    defaultChecked: {
+    isChecked: {
       options: 'boolean',
       description: 'Is the button checked by default?',
       defaultValue: false,
@@ -40,8 +34,7 @@ const Template: ComponentStory<typeof SwitchComp> = (args) => <SwitchComp {...ar
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  label:'Radio',
-  size: 'base',
+  size : 'base',
   isDisabled : false,
-  defaultChecked: false,
+  isChecked : false,
 };
