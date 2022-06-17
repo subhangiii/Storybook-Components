@@ -4,15 +4,12 @@ interface SelectProps {
   /**
    * Is this the principal call to action on the page?
    */
-  
+
   /**
    * How large should the button be?
    */
   size: 'xs' | 'sm' | 'base' | 'lg';
   type: 'Filled' | 'Outlined';
-
-
-
 
   /**
    * Button contents
@@ -40,13 +37,13 @@ export const Select = ({
   isDisabled = false,
   ...props
 }: SelectProps) => {
-    let css: string = "";
+  let css: string = '';
 
-    if (type === 'Outlined') {
-        if (isDisabled) {
-          css = `form-select appearance-none
+  if (type === 'Outlined') {
+    if (isDisabled) {
+      css = `form-select appearance-none
           block
-          w-full
+          w-100
           px-3
           py-1.5
           text-${size}
@@ -60,11 +57,10 @@ export const Select = ({
           m-0
           hover:bg-grey-100
           focus:text-gray-700 focus:bg-grey-100 focus:border-blue-800 focus:outline-none cursor-not-allowed`;
-        }
-        else{
-        css = `form-select appearance-none
+    } else {
+      css = `form-select appearance-none
         block
-        w-full
+        w-100
         px-3
         py-1.5
         text-${size}
@@ -78,14 +74,14 @@ export const Select = ({
         m-0
         hover:bg-grey-100
         focus:text-gray-700 focus:bg-grey-100 focus:border-blue-800 focus:outline-none`;
-        }
-      };
+    }
+  }
 
-      if (type === 'Filled') {
-        if (isDisabled) {
-          css = `form-select appearance-none
+  if (type === 'Filled') {
+    if (isDisabled) {
+      css = `form-select appearance-none
           block
-          w-full
+          w-100
           px-3
           py-1.5
           text-${size}
@@ -102,11 +98,10 @@ export const Select = ({
           m-0
           hover:bg-grey-100
           focus:text-gray-700 focus:bg-grey-100 focus:border-blue-800 focus:outline-none cursor-not-allowed`;
-        }
-        else{
-        css = `form-select appearance-none
+    } else {
+      css = `form-select appearance-none
         block
-        w-full
+        w-100
         px-3
         py-1.5
         text-${size}
@@ -122,26 +117,18 @@ export const Select = ({
         ease-in-out
         m-0
         hover:bg-grey-100
-        focus:text-gray-700 focus:bg-grey-100 focus:border-blue-800 focus:outline-none`
-        }
-      };
+        focus:text-gray-700 focus:bg-grey-100 focus:border-blue-800 focus:outline-none`;
+    }
+  }
 
-
-    return (
-      <div className="flex justify-center">
-  <div className="mb-3 xl:w-96">
-    <select 
-    className={css}
-    disabled = {isDisabled}
-    >
+  return (
+    <div className="mb-3 xl:w-96">
+      <select className={css} disabled={isDisabled}>
         <option selected>Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
-    </select>
-  </div>
-</div>  
-
+      </select>
+    </div>
   );
 };
-

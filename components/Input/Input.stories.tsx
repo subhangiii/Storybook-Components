@@ -15,8 +15,8 @@ export default {
       description: 'Set the type of input.',
       defaultValue: 'Outlined',
     },
-    isDisabled:{
-      options: 'boolean',  
+    isDisabled: {
+      options: 'boolean',
       description: 'Is the input disabled?',
       defaultValue: false,
     },
@@ -35,20 +35,27 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Outlined = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Outlined.args = {
-  size : 'base',
-  isDisabled : false,
+  size: 'base',
+  isDisabled: false,
+  type: 'Outlined',
+  title: 'Example Label',
+  placeholder: 'Example Placeholder',
 };
 export const Filled = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Filled.args = {
-  size : 'base',
-  isDisabled : false,
+  size: 'base',
+  isDisabled: false,
+  type: 'Filled',
+  title: 'Example Label',
+  placeholder: 'Example Placeholder',
 };
 export const Standard = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Standard.args = {
-  size : 'base',
-  isDisabled : false,
+  size: 'base',
+  isDisabled: false,
+  type: 'Standard',
+  title: 'Example Label',
+  placeholder: 'Example Placeholder',
 };
-
-

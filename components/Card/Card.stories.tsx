@@ -9,19 +9,13 @@ export default {
   component: Card,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    type: {
-      options: ['Outlined', 'Standard', 'Filled'],
-      control: { type: 'select' },
-      description: 'Set the type of input.',
-      defaultValue: 'Outlined',
-    },
-    isDisabled:{
-      options: 'boolean',  
+    isDisabled: {
+      options: 'boolean',
       description: 'Is the input disabled?',
       defaultValue: false,
     },
     size: {
-      options: ['sm', 'base', 'lg'],
+      options: ['xs', 'sm', 'base', 'lg'],
       control: { type: 'select' },
       description: 'Set the size of input.',
       defaultValue: 'base',
@@ -32,23 +26,13 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
-export const Outlined = Template.bind({});
+export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Outlined.args = {
-  size : 'base',
-  isDisabled : false,
+Primary.args = {
+  size: 'base',
+  isDisabled: false,
+  title: 'Card Title',
+  content:
+    "Some quick example text to build on the card title and make up the bulk of the card's content.",
+  button: 'Button',
 };
-export const Filled = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Filled.args = {
-  size : 'base',
-  isDisabled : false,
-};
-export const Standard = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Standard.args = {
-  size : 'base',
-  isDisabled : false,
-};
-
-
