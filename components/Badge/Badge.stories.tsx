@@ -43,7 +43,7 @@ export const Default = Template.bind({});
 Default.args = {
   size: 'base',
   type: 'Default',
-  color: 'blue',
+  color: 'pink',
   title: 'Badge',
 };
 
@@ -51,13 +51,13 @@ export const Icon = Template.bind({});
 Icon.args = {
   size: 'base',
   type: 'Icon',
-  color: 'blue',
+  color: 'pink',
   title: 'Badge',
 };
 export const IconOnly = Template.bind({});
 IconOnly.args = {
   size: 'base',
   type: 'IconOnly',
-  color: 'blue',
+  color: 'pink',
   title: 'Badge',
 };

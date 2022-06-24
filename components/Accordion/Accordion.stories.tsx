@@ -8,7 +8,7 @@ export default {
   component: Accordion,
   argTypes: {
     type: {
-      options: ['Default', 'Open', 'Color', 'Flush', 'Arrow'],
+      options: ['Default', 'Open', 'Color', 'Arrow'],
       control: { type: 'select' },
       description: 'Set the type of input.',
       defaultValue: 'Default',
@@ -44,14 +44,7 @@ Color.args = {
   content:
     'Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.',
 };
-export const Flush = Template.bind({});
-Flush.args = {
-  visible: true,
-  type: 'Flush',
-  title: 'Accordion Title',
-  content:
-    'Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.',
-};
+
 export const Arrow = Template.bind({});
 Arrow.args = {
   visible: true,
