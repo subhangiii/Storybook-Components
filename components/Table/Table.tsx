@@ -2,13 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Popover } from '@headlessui/react';
 import 'flowbite';
 interface TableProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-
-  /**
-   * How large should the button be?
-   */
   size: 'sm' | 'base' | 'lg';
   dataSource: Array<any>;
   columns: Array<{
